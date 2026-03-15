@@ -1,0 +1,104 @@
+.cellSpacing {
+  font-size: 12px;
+  background-color: transparent;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+.selectedRow {
+  background-color: #EEEEEE;
+}
+
+.theadCell {
+  text-align: left;
+  font-size: 12px;
+  text-align: center;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.driverTable {
+  border: solid 1px grey;
+  border-collapse: collapse;
+  padding: 5px 0 10px 0;
+}
+
+.selectedButton {
+  font-weight: bold;
+  border: 2px solid black;
+}
+
+.unselectedButton {
+  font-weight: lighter;
+  background: white;
+  border: 1px solid #EEEEEE;
+}
+
+.storedTraces {
+  margin: 20px 0;
+  padding: 5px 0 10px 10px;
+  //border: solid 1px grey;
+}
+
+.storedTracesTitle {
+  margin: 10px 0;
+}
+
+.plainInput {
+  border: 0 transparent;
+  text-align: center;
+  width: 50px;
+}
+
+table.noBorder {
+  //border-collapse: collapse;
+  border-width: 10px;
+}
+
+table.noBorder tr {
+  height: 30px;
+}
+
+table.noBorder td {
+  border: 0px solid transparent;
+}
+
+.rotateCell {
+  -moz-transform: rotate(-90.0deg);  /* FF3.5+ */
+  -o-transform: rotate(-90.0deg);  /* Opera 10.5 */
+  -webkit-transform: rotate(-90.0deg);  /* Saf3.1+, Chrome */
+  filter:  progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083);  /* IE6,IE7 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=0.083)"; /* IE8 */
+  margin-left: -10em;
+  margin-right: -10em;
+  text-align: center;
+}
+
+.blueCell {
+  background-color: cornflowerblue;
+  width: 40px;
+}
+
+.peachCell {
+  background-color: coral;
+  width: 40px;
+}
+
+.blueHead {
+  background-color: cornflowerblue;
+  text-align: center;
+}
+
+.peachHead {
+  background-color: coral;
+  text-align: center;
+}
+
+.buttonSpacing {
+  margin-bottom: 10px;
+}
