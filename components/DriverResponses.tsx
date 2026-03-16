@@ -10,7 +10,7 @@ import {
   LogarithmicScale,
 } from 'chart.js';
 import { Scatter } from 'react-chartjs-2';
-import { getResponse} from "../model/speaker-designer";
+import { getResponse, getImpedance} from "../model/speaker-designer";
 import { useState} from "react";
 import styles from './SpeakerDesign.module.scss';
 import StoredResponsesTable from "./tables/StoredResponsesTable";
@@ -148,7 +148,8 @@ const DriverResponses = (props: DriverResponsesProps) => {
         Fb,
         nDrivers,
         ported,
-      })
+      }),
+      impedance: getImpedance(driver),
     }
 
     setSavedTraces([
@@ -213,11 +214,49 @@ const DriverResponses = (props: DriverResponsesProps) => {
 
   return <div className={styles.container}>
 
-    <div>
-      <div className={"sectionTitle"}>SPL RESPONSE (1W/1m)</div>
-      <div style={{minWidth: 500, maxWidth: 1200, maxHeight: 800, minHeight: 500}}>
-        <Scatter options={scatterPlotOptions} data={scatterPlotData} />
+    <div style={{display: 'flex', flexDirection: 'row', gap: 24}}>
+
+      <div style={{flex: 1}}>
+        <div className={"sectionTitle"}>SPL RESPONSE (1W/1m)</div>
+        <div style={{minWidth: 500, maxWidth: 1200, maxHeight: 800, minHeight: 500}}>
+          <Scatter options={scatterPlotOptions} data={scatterPlotData} />
+        </div>
       </div>
+
+      <div style={{flex: 1}}>
+        <div className={"sectionTitle"}>IMPEDANCE</div>
+        <div style={{minWidth: 500, maxWidth: 1200, maxHeight: 800, minHeight: 500}}>
+          <Scatter
+            options={{
+              responsive: true,
+              animation: false as any,
+              maintainAspectRatio: false,
+              elements: { point: { radius: 0 } },
+              scales: {
+                x: { type: 'logarithmic' as const },
+                y: { min: 0, }
+              },
+              plugins: {
+                legend: { position: 'top' as const },
+                title: { display: false }
+              }
+            }}
+            data={{
+              datasets: savedTracesWithColor.map(d => ({
+                label: d.name,
+                data: d.impedance
+                  ? d.impedance.f.map((x: number, i: number) => ({ x, y: d.impedance!.Z[i] }))
+                  : [],
+                borderColor: d.color,
+                backgroundColor: d.color,
+                showLine: true,
+                borderWidth: 2,
+              }))
+            }}
+          />
+        </div>
+      </div>
+
     </div>
 
     <StoredResponsesTable

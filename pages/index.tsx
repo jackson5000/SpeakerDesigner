@@ -7,14 +7,14 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Loudspeaker Database</title>
+        <title>Loudspeaker Simulator</title>
         <meta name="description" content="Speakers" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>Loudspeaker Database</h1>
-        <h1 className={styles.title}>Low-Frequency SPL Simulator</h1>
+        <h1 className={styles.title}>Loudspeaker Simulator</h1>
+        <h1 className={styles.title}>Low-Frequency SPL Simulation Tool</h1>
 
         <SpeakerDesign />
 

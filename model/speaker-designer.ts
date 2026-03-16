@@ -314,3 +314,21 @@ export const useDrivers = ({ Sd, filterDriversPercent}: {
 
 }
 
+export const getImpedance = (driver: Driver): { f: number[], Z: number[] } | null => {
+  const { Re, Fs, Qes, Qms } = driver;
+
+  const numberValid = (n: number) => !isNaN(n) && isFinite(n) && n > 0;
+  if (!numberValid(Re) || !numberValid(Fs) || !numberValid(Qes) || !numberValid(Qms)) {
+    return null;
+  }
+
+const Z = F.map(f => {
+    const fn = f / Fs;
+    const fn2 = pow(fn, 2);
+    const denom = pow(1 - fn2, 2) + pow(fn / Qms, 2);
+    const num = pow(1 - fn2, 2) + pow(fn / Qes, 2);
+    return Re * sqrt(num / denom);
+  });
+
+  return { f: F, Z };
+}

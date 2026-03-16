@@ -45,7 +45,12 @@ export interface Response {
   SPLTher: number[],
 }
 
-export type DriverResponse = {driver: Driver, response: Response};
+export interface ImpedanceResponse {
+  f: number[],
+  Z: number[],
+}
+
+export type DriverResponse = {driver: Driver, response: Response, impedance?: ImpedanceResponse | null};
 
 export type DriverTableCell = {
   text: string,
